@@ -130,7 +130,7 @@ set linespace=1
 
 if has('nvim')
     set title
-    set titlestring=%t\ %{:expand(':h')}
+    set titlestring=%t\ %{expand(':h')}
 endif
 
 "-------------------------------------------------------------------------------
@@ -180,7 +180,8 @@ set foldmethod=marker           " fold by using markers
 set formatoptions+=nBj          " n: recognize numbered lists
                                 " B: don't insert a space between multi-byte characters when joining lines
                                 " j: remove a comment leader when joining lines
-set guioptions=egrL             " gVim options.
+if !has('nvim')
+    set guioptions=egrL         " gVim options.
                                 " e: use GUI tabs.
                                 " -m: no menu bar.
                                 " g: grey inactive menu items.
@@ -188,6 +189,7 @@ set guioptions=egrL             " gVim options.
                                 " -T: no toolbar.
                                 " r: show right-hand scrollbar.
                                 " L: show left-hand scrollbar when vertically split.
+endif
 set hidden                      " keep changed buffer without saving it
 set history=10000               " keep 10000 lines of command line history
 set hlsearch                    " highlight the last used search pattern
